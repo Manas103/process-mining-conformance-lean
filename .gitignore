@@ -1,0 +1,14 @@
+# virtual environment
+.venv/
+
+# python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# regenerable data: the 120,000-event log and any duckdb file.
+# regenerate with: .venv\Scripts\python scripts\generate_log.py
+data/*.csv
+data/*.duckdb
+data/*.parquet
+!data/.gitkeep

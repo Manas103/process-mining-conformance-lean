@@ -1,0 +1,40 @@
+Claim 1: 120,000 workflow events.
+MEASURED: 120000 events across 15000 cases
+meets_claim = True
+
+Claim 2: 24 of 24 seeded deviations from the documented procedure caught.
+seeded deviation cases: 24
+MEASURED: 24 of 24 caught
+meets_claim = True
+
+Claim 3: 0 false flags over 20 clean runs.
+MEASURED: 0 false flags over 4000 clean cases across 20 runs
+meets_claim = True
+
+Claim 4: located the handoff holding the largest share of median cycle time (design target: 41%).
+       from_activity          to_activity  median_minutes  pct_of_median_total_cycle_time  median_total_cycle_time_minutes
+           Pack Item            Ship Item           745.5                       50.100806                           1488.0
+      Order Received         Credit Check           220.0                       14.784946                           1488.0
+           Ship Item    Invoice Generated           160.0                       10.752688                           1488.0
+        Credit Check Inventory Allocation           107.0                        7.190860                           1488.0
+           Pick Item            Pack Item            76.0                        5.107527                           1488.0
+   Invoice Generated         Order Closed            51.0                        3.427419                           1488.0
+Inventory Allocation            Pick Item            50.0                        3.360215                           1488.0
+MEASURED bottleneck: Pack Item -> Ship Item, 50.1% of median cycle time (1488.0 minutes)
+meets_claim = n/a (design target was 41%; reported here is what was measured, not tuned to match)
+
+Claim 5: simulation predicted a median cycle-time cut, confirmed within 4 points by a held-out replay (design target: predicted 27%).
+  fit_case_count = 7488
+  holdout_case_count = 7488
+  fit_median_asis_minutes = 1491.0
+  fit_median_redesigned_minutes = 935.0
+  predicted_pct_cut = 37.29040912139504
+  holdout_median_asis_minutes = 1484.0
+  holdout_median_redesigned_minutes = 930.0
+  actual_pct_cut_on_holdout = 37.331536388140165
+  points_off = 0.041127266745128566
+MEASURED: predicted 37.29% on the fit half (7488 cases), actual 37.33% on the held-out half (7488 cases), 0.04 points off
+meets_claim (within 4 points) = True
+
+Bonus (not a resume claim, validation of the discovery module): directly-follows miner recovers the documented 7-edge procedure exactly.
+MEASURED: exact_match=True missing=set() extra=set()

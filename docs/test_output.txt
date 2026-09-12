@@ -1,0 +1,21 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.10, pytest-9.1.1, pluggy-1.6.0 -- C:\Users\Manas\Downloads\Total Job Application process flow\projects\process-mining-conformance-lean\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Manas\Downloads\Total Job Application process flow
+configfile: pytest.ini
+collecting ... collected 10 items
+
+tests\test_conformance.py::test_24_of_24_seeded_deviations_caught PASSED
+tests\test_conformance.py::test_conformant_case_count_is_the_remaining_14976 PASSED
+tests\test_conformance.py::test_real_engine_agrees_with_independent_pure_python_oracle_over_the_full_log PASSED
+tests\test_conformance.py::test_event_id_tiebreak_is_the_fix_for_a_real_ordering_bug PASSED
+tests\test_cycle_time_and_simulation.py::test_per_case_handoff_decomposition_sums_exactly_to_total_cycle_time PASSED
+tests\test_cycle_time_and_simulation.py::test_bottleneck_handoff_is_located MEASURED bottleneck share: 50.1% of median cycle time (1488.0 min)
+PASSED
+tests\test_cycle_time_and_simulation.py::test_simulation_prediction_confirmed_by_held_out_replay MEASURED predicted_pct_cut=37.29 actual_pct_cut_on_holdout=37.33 points_off=0.04
+PASSED
+tests\test_discovery.py::test_directly_follows_miner_recovers_the_documented_procedure_exactly PASSED
+tests\test_discovery.py::test_miner_sees_seeded_noise_but_min_support_keeps_it_out_of_the_discovered_model PASSED
+tests\test_false_flags.py::test_0_false_flags_over_20_clean_runs PASSED
+
+============================= 10 passed in 3.98s ==============================

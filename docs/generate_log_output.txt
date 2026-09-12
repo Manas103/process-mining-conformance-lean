@@ -1,0 +1,6 @@
+wrote 120000 events across 15000 cases to C:\Users\Manas\Downloads\Total Job Application process flow\projects\process-mining-conformance-lean\data
+deviation_category
+clean                14976
+missing_step             8
+out_of_order             8
+unauthorized_step        8
