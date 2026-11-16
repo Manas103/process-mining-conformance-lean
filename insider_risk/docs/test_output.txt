@@ -1,0 +1,16 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.10, pytest-9.1.1, pluggy-1.7.0 -- C:\Users\Manas\Downloads\Auto Job Applier\Total Job Application process flow\projects\process-mining-conformance-lean\insider_risk\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Manas\Downloads\Auto Job Applier\Total Job Application process flow\projects\process-mining-conformance-lean\insider_risk
+configfile: pytest.ini
+collecting ... collected 7 items
+
+tests/test_cycle_time.py::test_120000_events_across_20000_cases PASSED
+tests/test_cycle_time.py::test_per_case_decomposition_sums_exactly_to_total_cycle_time PASSED
+tests/test_cycle_time.py::test_real_engine_agrees_with_independent_pure_python_oracle PASSED
+tests/test_cycle_time.py::test_bottleneck_handoff_is_located PASSED
+tests/test_detection.py::test_all_6_rules_scored PASSED
+tests/test_reporting.py::test_all_small_cells_suppressed_and_large_cells_not PASSED
+tests/test_reporting.py::test_40_of_40_reidentification_queries_blocked PASSED
+
+============================= 7 passed in 43.37s ==============================

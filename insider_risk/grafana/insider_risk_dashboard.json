@@ -1,0 +1,53 @@
+{
+  "title": "Insider Risk Program: Workload, Cycle Time, Detection Performance",
+  "schemaVersion": 39,
+  "__inputs": [],
+  "__requires": [{ "type": "datasource", "id": "postgres", "name": "PostgreSQL" }],
+  "templating": {
+    "list": [
+      { "name": "detection_rule", "type": "query", "query": "SELECT DISTINCT detection_rule FROM case_meta ORDER BY 1" }
+    ]
+  },
+  "panels": [
+    {
+      "id": 1,
+      "title": "Median handoff duration by stage (minutes)",
+      "type": "barchart",
+      "gridPos": { "x": 0, "y": 0, "w": 12, "h": 8 },
+      "description": "One bar per handoff in the 6-stage case lifecycle; the design-target annotation at 50% marks the seeded bottleneck handoff's expected share of median total cycle time (measured: 47.9%, see docs/benchmark_output.txt).",
+      "targets": [
+        { "rawSql": "SELECT handoff_label, PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY minutes) AS median_minutes FROM case_handoffs GROUP BY handoff_label ORDER BY median_minutes DESC" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Per-rule substantiation rate",
+      "type": "table",
+      "gridPos": { "x": 12, "y": 0, "w": 12, "h": 8 },
+      "description": "fired, substantiated and substantiation_rate per detection rule, from ir_detection.per_rule_performance.",
+      "targets": [
+        { "rawSql": "SELECT detection_rule, COUNT(*) AS fired, SUM(CASE WHEN substantiated THEN 1 ELSE 0 END) AS substantiated FROM case_meta GROUP BY detection_rule ORDER BY detection_rule" }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Workload by analyst and week (suppressed under 5 cases)",
+      "type": "heatmap",
+      "gridPos": { "x": 0, "y": 8, "w": 12, "h": 8 },
+      "description": "A cell showing 0 means either genuinely zero cases or a cell the reporting layer suppressed for covering fewer than SUPPRESSION_THRESHOLD (5) cases; this dashboard never distinguishes the two, by design (see ir_reporting.aggregate_count).",
+      "targets": [
+        { "rawSql": "SELECT analyst, date_trunc('week', referral_date) AS week, COUNT(*) AS n FROM case_meta GROUP BY analyst, week HAVING COUNT(*) >= 5" }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Open cases by stage (current backlog)",
+      "type": "stat",
+      "gridPos": { "x": 12, "y": 8, "w": 12, "h": 8 },
+      "description": "Count of cases currently sitting at each stage; a program lever, not a resume claim this repo measures.",
+      "targets": [
+        { "rawSql": "SELECT current_stage, COUNT(*) AS n FROM case_status GROUP BY current_stage" }
+      ]
+    }
+  ]
+}

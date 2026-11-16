@@ -1,0 +1,28 @@
+Claim: decomposed a 120,000-event synthetic case log into per-stage cycle time from intake to disposition
+Measured: 120000 events across 20000 cases, 6 stages each
+Conservation identity (per-case handoffs sum to total cycle time): max abs error 0.00e+00 minutes
+Independent pure-Python oracle cross-check: 0 mismatches over 20000 cases x 6 columns
+meets_claim: True
+
+Claim: per-rule detection performance
+    detection_rule  fired  substantiated  substantiation_rate
+    Access-Anomaly   5135           1306             0.254333
+     Anonymous-Tip    970            144             0.148454
+     DLP-BulkExfil   5963           2086             0.349824
+DLP-OffHoursUpload   4956            977             0.197135
+       HR-Referral   1662            952             0.572804
+    Manager-Report   1314            611             0.464992
+meets_claim: True
+
+Claim: located the slowest handoff at 50% of median cycle time
+Measured: Triage Completed -> Investigation Opened, median 345.0 min, 47.9% of median total cycle time (design target 50%)
+meets_claim: True
+
+Claim: served only aggregates, suppressing cells under 5 cases
+Measured: 13049 of 13049 cells under 5 cases suppressed; 62 of 62 cells at or above 5 cases served with their real count
+meets_claim: True
+
+Claim: blocked 40 of 40 re-identification queries
+Measured: 40 of 40 seeded re-identification queries blocked
+meets_claim: True
+
