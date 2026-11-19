@@ -1,0 +1,39 @@
+Claim 1: 120,000-event simulated operations log.
+MEASURED: 120000 events across 24000 sessions
+meets_claim = True
+
+Claim 2: 24 of 24 seeded deviations caught and classified.
+seeded deviation sessions: 24
+MEASURED: 24 of 24 caught, 0 misclassified
+meets_claim = True
+
+Claim 3: 0 false flags over 20 clean runs.
+MEASURED: 0 false flags over 4000 clean cases across 20 runs
+meets_claim = True
+
+Claim 4: SQL conformance decisions diffed exactly against an independently coded oracle.
+MEASURED: 0 disagreements over 24000 cases
+meets_claim = True
+
+Claim 5: bottleneck handoff located (design target: 50.1% of median cycle time).
+    from_activity       to_activity  median_minutes  pct_of_median_total_cycle_time  median_total_cycle_time_minutes
+Episode Validated  Episode Uploaded           734.0                       88.433735                            830.0
+ Episode Recorded Episode Validated            40.0                        4.819277                            830.0
+      Scene Reset  Episode Recorded            25.0                        3.012048                            830.0
+  Station Prepped       Scene Reset            19.0                        2.289157                            830.0
+MEASURED bottleneck: Episode Validated -> Episode Uploaded, 88.4% of median cycle time (830.0 minutes)
+meets_claim = n/a (design target was 50.1%, the base repo's own measured figure; reported here is what was measured in this extension's own domain, not adjusted to match)
+
+Claim 6: one handoff change predicted a 37.3% median cycle-time cut against 37.3% measured on a held-out replay (design target, the base repo's own measured figure).
+  fit_case_count = 11988
+  holdout_case_count = 11988
+  fit_median_asis_minutes = 830.0
+  fit_median_redesigned_minutes = 288.0
+  predicted_pct_cut = 65.3012048192771
+  holdout_median_asis_minutes = 830.0
+  holdout_median_redesigned_minutes = 286.0
+  actual_pct_cut_on_holdout = 65.5421686746988
+  points_off = 0.24096385542169685
+MEASURED: predicted 65.30% on the fit half (11988 cases), actual 65.54% on the held-out half (11988 cases), 0.24 points off
+meets_claim (within 4 points) = True
+

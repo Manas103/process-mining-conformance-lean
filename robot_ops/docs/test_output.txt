@@ -1,0 +1,18 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.10, pytest-9.1.1, pluggy-1.7.0 -- C:\Users\Manas\Downloads\Auto Job Applier\Total Job Application process flow\projects\process-mining-conformance-lean\robot_ops\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Manas\Downloads\Auto Job Applier\Total Job Application process flow\projects\process-mining-conformance-lean\robot_ops
+configfile: pytest.ini
+collecting ... collected 7 items
+
+tests/test_conformance.py::test_24_of_24_seeded_deviations_caught PASSED
+tests/test_conformance.py::test_conformant_case_count_is_the_remaining_23976 PASSED
+tests/test_conformance.py::test_real_engine_agrees_with_independent_pure_python_oracle_over_the_full_log PASSED
+tests/test_cycle_time_and_simulation.py::test_per_case_handoff_decomposition_sums_exactly_to_total_cycle_time PASSED
+tests/test_cycle_time_and_simulation.py::test_bottleneck_handoff_is_located MEASURED bottleneck share: 88.4% of median cycle time (830.0 min)
+PASSED
+tests/test_cycle_time_and_simulation.py::test_simulation_prediction_confirmed_by_held_out_replay MEASURED predicted_pct_cut=65.30 actual_pct_cut_on_holdout=65.54 points_off=0.24
+PASSED
+tests/test_false_flags.py::test_0_false_flags_over_20_clean_runs PASSED
+
+============================== 7 passed in 3.38s ==============================
